@@ -1,4 +1,5 @@
 import {GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import Link from "next/link";
 import { ProductDetails } from "../../components/Product";
 
 interface StoreApiResponse {
@@ -62,15 +63,21 @@ const ProductIdPage = ({
   }
 
   return (
-    <ProductDetails
-      data={{
-        title: data.title,
-        imageUrl: data.image,
-        imageAlt: data.title,
-        description: data.description,
-        rating: data.rating.rate,
-      }}
-    />
+    <>
+      <Link href="/products">
+        <a>Wróć na stronę główną</a>
+      </Link>
+      <ProductDetails
+        data={{
+          id: data.id,
+          title: data.title,
+          imageUrl: data.image,
+          imageAlt: data.title,
+          description: data.description,
+          rating: data.rating.rate,
+        }}
+      />
+    </>
   );
 };
 
