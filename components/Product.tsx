@@ -15,12 +15,16 @@ interface ProductProps {
 };
 
 export const ProductDetails = ({ data }: ProductProps) => (
-  <>
-    <img src={data.imageUrl} alt={data.imageAlt} />
-    <h2 className="p-4 text-3xl font-bold">{data.title}</h2>
-    <p className="p-4">{data.description}</p>
-    <Rating rating={data.rating} />
-  </>
+  <div className="mt-5">
+    <div className="flex">
+      <img src={data.imageUrl} alt={data.imageAlt} />
+      <div>
+        <h2 className="p-4 text-3xl font-bold">{data.title}</h2>
+        <p className="p-4">{data.description}</p>
+        <Rating rating={data.rating} />
+      </div>
+    </div>
+  </div>
 );
 
 type ProductListItem = Pick<

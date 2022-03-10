@@ -1,5 +1,8 @@
 import {GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import Link from "next/link";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import { Main } from "../../components/Main";
 import { ProductDetails } from "../../components/Product";
 
 interface StoreApiResponse {
@@ -16,7 +19,7 @@ interface StoreApiResponse {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("https://fakestoreapi.com/products/");
+  const res = await fetch("https://naszsklep-api.vercel.app/api/products");
   const data: StoreApiResponse[] = await res.json();
 
 
@@ -44,7 +47,7 @@ export const getStaticProps = async ({
   }
 
   const res = await fetch(
-    `https://fakestoreapi.com/products/${params?.productId}`
+    `https://naszsklep-api.vercel.app/api/products/${params?.productId}`
   );
   const data: StoreApiResponse | null = await res.json();
 
@@ -63,21 +66,25 @@ const ProductIdPage = ({
   }
 
   return (
-    <>
-      <Link href="/products">
-        <a>Wróć na stronę główną</a>
-      </Link>
-      <ProductDetails
-        data={{
-          id: data.id,
-          title: data.title,
-          imageUrl: data.image,
-          imageAlt: data.title,
-          description: data.description,
-          rating: data.rating.rate,
-        }}
-      />
-    </>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <Main>
+        <Link href="/products">
+          <a className="font-bold hover:font-extrabold">{"<- Back to Products"}</a>
+        </Link>
+        <ProductDetails
+          data={{
+            id: data.id,
+            title: data.title,
+            imageUrl: data.image,
+            imageAlt: data.title,
+            description: data.description,
+            rating: data.rating.rate,
+          }}
+        />
+      </Main>
+      <Footer />
+    </div>
   );
 };
 

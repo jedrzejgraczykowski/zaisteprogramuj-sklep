@@ -18,7 +18,7 @@ interface StoreApiResponse {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://fakestoreapi.com/products/");
+  const res = await fetch("https://naszsklep-api.vercel.app/api/products");
   const data: StoreApiResponse[] = await res.json();
 
   return {
@@ -32,7 +32,7 @@ export const ProductsPage = ({
   data
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen">
       <Header />
       <Main>
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

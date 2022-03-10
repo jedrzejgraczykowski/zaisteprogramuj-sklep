@@ -3,5 +3,5 @@ interface RatingProps {
 };
 
 export const Rating = ({ rating }: RatingProps) => (
-  <div className="text-blue-500 font-bold">{rating}</div>
+  <div className="p-4 font-bold">{`Rating: ${rating}`}</div>
 );
