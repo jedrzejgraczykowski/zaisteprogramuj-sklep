@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType } from "next";
-import { Product } from "../components/Produxt";
+import { ProductListItem } from "../components/Product";
 
 interface StoreApiResponse {
   id: number;
@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const ProductsPage = ({
+export const ProductsPage = ({
   data
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -33,12 +33,10 @@ const ProductsPage = ({
       {data.map(product => {
         return (
           <li key={product.id} className="shadow-xl border-2">
-            <Product data={{
+            <ProductListItem data={{
               title: product.title,
-              description: product.description,
               imageUrl: product.image,
               imageAlt: product.title,
-              rating: product.rating.rate,
             }}/>
           </li>
         );
