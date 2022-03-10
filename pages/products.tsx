@@ -1,4 +1,7 @@
 import { InferGetStaticPropsType } from "next";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { Main } from "../components/Main";
 import { ProductListItem } from "../components/Product";
 
 interface StoreApiResponse {
@@ -29,20 +32,26 @@ export const ProductsPage = ({
   data
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {data.map(product => {
-        return (
-          <li key={product.id} className="shadow-xl border-2">
-            <ProductListItem data={{
-              id: product.id,
-              title: product.title,
-              imageUrl: product.image,
-              imageAlt: product.title,
-            }}/>
-          </li>
-        );
-      })}
-    </ul>
+    <div className="min-h-screen">
+      <Header />
+      <Main>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {data.map(product => {
+            return (
+              <li key={product.id} className="shadow-xl border-2">
+                <ProductListItem data={{
+                  id: product.id,
+                  title: product.title,
+                  imageUrl: product.image,
+                  imageAlt: product.title,
+                }}/>
+              </li>
+            );
+          })}
+        </ul>
+      </Main>
+      <Footer />
+    </div>
   );
 };
 
