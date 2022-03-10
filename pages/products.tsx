@@ -2,6 +2,7 @@ import { InferGetStaticPropsType } from "next";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { Main } from "../components/Main";
+import { Pagination } from "../components/Pagination";
 import { ProductListItem } from "../components/Product";
 
 interface StoreApiResponse {
@@ -49,6 +50,7 @@ export const ProductsPage = ({
             );
           })}
         </ul>
+        <Pagination />
       </Main>
       <Footer />
     </div>
