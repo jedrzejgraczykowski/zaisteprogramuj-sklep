@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="max-w-7xl mx-auto w-full bg-gray-900 text-white px-4 py-2">
-      Stopka
+    <footer className="flex justify-center max-w-7xl mx-auto w-full bg-gray-700 text-white py-3">
+      Jędrzej Graczykowski | Random Shop | 2022
     </footer>
   );
 }
