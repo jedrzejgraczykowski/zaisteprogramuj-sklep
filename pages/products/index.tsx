@@ -1,26 +1,17 @@
 import { InferGetStaticPropsType } from "next";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import { Main } from "../components/Main";
-import { Pagination } from "../components/Pagination";
-import { ProductListItem } from "../components/Product";
+import { useRouter } from "next/router";
+import { off } from "process";
+import { useQuery } from "react-query";
+import Footer from "../../app/components/Footer";
+import Header from "../../app/components/Header";
+import Main from "../../app/components/Main";
+import { ProductListItem } from "../../app/components/Product";
+import { Product } from "../../app/types/Product";
 
-interface StoreApiResponse {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-};
 
 export const getStaticProps = async () => {
   const res = await fetch("https://naszsklep-api.vercel.app/api/products");
-  const data: StoreApiResponse[] = await res.json();
+  const data: Product[] = await res.json();
 
   return {
     props: {
@@ -29,15 +20,17 @@ export const getStaticProps = async () => {
   };
 };
 
-export const ProductsPage = ({
-  data
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+export const ProductsPage = (
+  {
+    data,
+  }: InferGetStaticPropsType<typeof getStaticProps>
+) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <Main>
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {data.map(product => {
+          {data?.map(product => {
             return (
               <li key={product.id} className="shadow-xl border-2">
                 <ProductListItem data={{
@@ -50,7 +43,6 @@ export const ProductsPage = ({
             );
           })}
         </ul>
-        <Pagination />
       </Main>
       <Footer />
     </div>
