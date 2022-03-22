@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Footer from "../../../app/components/layout/Footer";
 import Header from "../../../app/components/layout/Header";
 import Main from "../../../app/components/layout/Main";
-import { ProductDetails } from "../../../app/components/Product";
+import { ProductDetails } from "../../../app/components/ProductDetails";
 import { PAGES_TOTAL, PRODUCTS_PER_PAGE } from "../../../app/constants/constants";
 import { InferGetStaticPaths } from "../../../app/types/InferGetStaticPaths";
 import { Product } from "../../../app/types/Product";

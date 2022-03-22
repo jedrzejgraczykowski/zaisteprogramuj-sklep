@@ -1,7 +1,7 @@
 import Header from "./layout/Header";
 import Main from "./layout/Main";
 import Footer from "./layout/Footer";
-import { ProductListItem } from "./Product";
+import { ProductListItem } from "./ProductListItem";
 import { Product } from "../types/Product";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
