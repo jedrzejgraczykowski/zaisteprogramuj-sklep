@@ -80,6 +80,7 @@ const ProductIdPage = ({
           imageAlt: data.title,
           description: data.description,
           rating: data.rating.rate,
+          longDescription: data.longDescription,
         }}
       />
     </>
