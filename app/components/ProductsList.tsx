@@ -1,6 +1,3 @@
-import Header from "./layout/Header";
-import Main from "./layout/Main";
-import Footer from "./layout/Footer";
 import { ProductListItem } from "./ProductListItem";
 import { Product } from "../types/Product";
 import { useEffect, useState } from "react";
@@ -22,37 +19,33 @@ export const ProductsList = ({ data }: ProductsListProps) => {
   }, [query])
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <Main>
-        <div className="flex justify-center mb-7 mt-4">
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </div>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {data.map(product => {
-            return (
-              <li key={product.id} className="shadow-xl border-2">
-                <ProductListItem data={{
-                  id: product.id,
-                  title: product.title,
-                  imageUrl: product.image,
-                  imageAlt: product.title,
-                }}/>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="flex justify-center mb-7 mt-14">
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </div>
-      </Main>
-      <Footer />
-    </div>
+    <>
+      <div className="flex justify-center mb-7 mt-4">
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {data.map(product => {
+          return (
+            <li key={product.id} className="shadow-xl border-2">
+              <ProductListItem data={{
+                id: product.id,
+                title: product.title,
+                imageUrl: product.image,
+                imageAlt: product.title,
+              }}/>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="flex justify-center mb-7 mt-14">
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </div>
+    </>
   );
 }

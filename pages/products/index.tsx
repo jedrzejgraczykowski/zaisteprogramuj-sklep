@@ -1,6 +1,6 @@
 import { InferGetStaticPropsType } from "next";
 import { ProductsList } from "../../app/components/ProductsList";
-import { PAGES_TOTAL, PRODUCTS_PER_PAGE } from "../../app/constants/constants";
+import { PRODUCTS_PER_PAGE } from "../../app/constants/constants";
 import { Product } from "../../app/types/Product";
 
 export const getStaticProps = async () => {
