@@ -1,10 +1,43 @@
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ProductDetails } from "../../../app/components/ProductDetails";
+import { ProductDetails } from "../../../app/components/products/ProductDetails";
 import { PAGES_TOTAL, PRODUCTS_PER_PAGE } from "../../../app/constants/constants";
 import { InferGetStaticPaths } from "../../../app/types/InferGetStaticPaths";
 import { Product } from "../../../app/types/Product";
+
+const ProductIdPage = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <div>Loading...</div>
+  }
+
+  if (!data) {
+    return <div>Something went wrong...</div>
+  }
+
+  return (
+    <>
+      <Link href="/products">
+        <a className="font-bold hover:font-extrabold">{"<- Back to Products"}</a>
+      </Link>
+      <ProductDetails
+        data={{
+          id: data.id,
+          title: data.title,
+          imageUrl: data.image,
+          imageAlt: data.title,
+          description: data.description,
+          rating: data.rating.rate,
+          longDescription: data.longDescription,
+        }}
+      />
+    </>
+  );
+};
 
 export const getStaticPaths = async () => {
   const res = await fetch(
@@ -52,39 +85,6 @@ export const getStaticProps = async ({
       data,
     },
   };
-};
-
-const ProductIdPage = ({
-  data,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { isFallback } = useRouter();
-
-  if (isFallback) {
-    return <div>Loading...</div>
-  }
-
-  if (!data) {
-    return <div>Something went wrong...</div>
-  }
-
-  return (
-    <>
-      <Link href="/products">
-        <a className="font-bold hover:font-extrabold">{"<- Back to Products"}</a>
-      </Link>
-      <ProductDetails
-        data={{
-          id: data.id,
-          title: data.title,
-          imageUrl: data.image,
-          imageAlt: data.title,
-          description: data.description,
-          rating: data.rating.rate,
-          longDescription: data.longDescription,
-        }}
-      />
-    </>
-  );
 };
 
 export default ProductIdPage;

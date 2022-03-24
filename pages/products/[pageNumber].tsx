@@ -1,9 +1,20 @@
 import { useRouter } from "next/router"
 import { InferGetStaticPropsType } from "next";
-import { ProductsList } from "../../app/components/ProductsList";
+import { ProductsList } from "../../app/components/products/ProductsList";
 import { PRODUCTS_PER_PAGE } from "../../app/constants/constants";
 import { InferGetStaticPaths } from "../../app/types/InferGetStaticPaths";
 import { Product } from "../../app/types/Product";
+
+const ProductsPage = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <div>Loading...</div>;
+  }
+  return <ProductsList data={data} />;
+};
 
 export const getStaticPaths = async () => {
   const paths = Array.from({ length: 20 }, (_, i) => ({
@@ -30,17 +41,6 @@ export const getStaticProps = async ({
       data,
     },
   };
-};
-
-const ProductsPage = ({
-  data,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { isFallback } = useRouter();
-
-  if (isFallback) {
-    return <div>Loading...</div>;
-  }
-  return <ProductsList data={data} />;
 };
 
 export default ProductsPage;

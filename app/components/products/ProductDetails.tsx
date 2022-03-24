@@ -3,6 +3,8 @@ import { Rating } from "./Rating";
 import ReactMarkdown from "react-markdown";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import Link from "next/link";
+import { RandomShopMarkdown } from "../shared/RandomShopMarkdown";
 
 export interface ProductDetails {
   id: number,
@@ -55,7 +57,7 @@ export const ProductDetails = ({ data }: ProductProps) => {
             <h2 className="p-4 text-3xl font-bold">{data.title}</h2>
             <p className="p-4">{data.description}</p>
             <article className="prose lg:prose-xl p-4">
-              <ReactMarkdown>{data.longDescription}</ReactMarkdown>
+              <RandomShopMarkdown>{data.longDescription}</RandomShopMarkdown>
             </article>
             <Rating rating={data.rating} />
           </div>

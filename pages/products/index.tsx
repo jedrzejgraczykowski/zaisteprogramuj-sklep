@@ -1,7 +1,15 @@
 import { InferGetStaticPropsType } from "next";
-import { ProductsList } from "../../app/components/ProductsList";
+import { ProductsList } from "../../app/components/products/ProductsList";
 import { PRODUCTS_PER_PAGE } from "../../app/constants/constants";
 import { Product } from "../../app/types/Product";
+
+const ProductsPage = (
+  {
+    data,
+  }: InferGetStaticPropsType<typeof getStaticProps>
+) => {
+  return <ProductsList data={data} />;
+};
 
 export const getStaticProps = async () => {
   const currentPage = 0;
@@ -15,14 +23,6 @@ export const getStaticProps = async () => {
       data,
     },
   };
-};
-
-const ProductsPage = (
-  {
-    data,
-  }: InferGetStaticPropsType<typeof getStaticProps>
-) => {
-  return <ProductsList data={data} />;
 };
 
 export default ProductsPage;
