@@ -1,9 +1,6 @@
-import {GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Footer from "../../../app/components/layout/Footer";
-import Header from "../../../app/components/layout/Header";
-import Main from "../../../app/components/layout/Main";
 import { ProductDetails } from "../../../app/components/ProductDetails";
 import { PAGES_TOTAL, PRODUCTS_PER_PAGE } from "../../../app/constants/constants";
 import { InferGetStaticPaths } from "../../../app/types/InferGetStaticPaths";
@@ -71,25 +68,22 @@ const ProductIdPage = ({
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <Main>
-        <Link href="/products">
-          <a className="font-bold hover:font-extrabold">{"<- Back to Products"}</a>
-        </Link>
-        <ProductDetails
-          data={{
-            id: data.id,
-            title: data.title,
-            imageUrl: data.image,
-            imageAlt: data.title,
-            description: data.description,
-            rating: data.rating.rate,
-          }}
-        />
-      </Main>
-      <Footer />
-    </div>
+    <>
+      <Link href="/products">
+        <a className="font-bold hover:font-extrabold">{"<- Back to Products"}</a>
+      </Link>
+      <ProductDetails
+        data={{
+          id: data.id,
+          title: data.title,
+          imageUrl: data.image,
+          imageAlt: data.title,
+          description: data.description,
+          rating: data.rating.rate,
+          longDescription: data.longDescription,
+        }}
+      />
+    </>
   );
 };
 
