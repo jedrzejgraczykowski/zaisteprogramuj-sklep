@@ -1,8 +1,9 @@
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote } from "next-mdx-remote";
 import Link from "next/link";
+import { MarkdownResult } from "../../types/utilis_types";
 
 export const RandomShopMarkdown = (
-  { children }: { children: MDXRemoteSerializeResult<Record<string, unknown>> }
+  { children }: { children: MarkdownResult }
 ) => {
   return (
     <MDXRemote

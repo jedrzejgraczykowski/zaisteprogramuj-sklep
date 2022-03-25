@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Rating } from "./Rating";
 import { NextSeo } from "next-seo";
 import { RandomShopMarkdown } from "../shared/RandomShopMarkdown";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MarkdownResult } from "../../types/utilis_types";
 
 export interface ProductDetails {
   id: number,
@@ -11,7 +11,7 @@ export interface ProductDetails {
   imageUrl: string;
   imageAlt: string;
   rating: number;
-  longDescription: MDXRemoteSerializeResult<Record<string, unknown>>;
+  longDescription: MarkdownResult;
 };
 
 interface ProductProps {

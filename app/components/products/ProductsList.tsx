@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { Product } from "../../types/Product";
 import { ProductListItem } from "./ProductListItem";
-import { Pagination } from "../pagination/PaginationComponent";
+import { Pagination } from "../pagination/Pagination";
 
 export interface ProductsListProps {
   data: Product[];

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PAGES_TOTAL } from "../../constants/constants";
 import { PaginationArray } from "./PaginationArray";
 import { PaginationDots } from "./PaginationDots";
