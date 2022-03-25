@@ -1,6 +1,7 @@
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { serialize } from "next-mdx-remote/serialize";
 import { ProductDetails } from "../../../app/components/products/ProductDetails";
 import { PAGES_TOTAL, PRODUCTS_PER_PAGE } from "../../../app/constants/constants";
 import { InferGetStaticPaths } from "../../../app/types/InferGetStaticPaths";
@@ -82,7 +83,10 @@ export const getStaticProps = async ({
 
   return {
     props: {
-      data,
+      data: {
+        ...data,
+        longDescription: await serialize(data.longDescription),
+      },
     },
   };
 };

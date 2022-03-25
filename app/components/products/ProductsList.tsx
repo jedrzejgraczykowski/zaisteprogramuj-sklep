@@ -1,8 +1,9 @@
-import { ProductListItem } from "./ProductListItem";
-import { Product } from "../../types/Product";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Pagination } from "../pagination/Pagination";
+
+import { Product } from "../../types/Product";
+import { ProductListItem } from "./ProductListItem";
+import { Pagination } from "../pagination/PaginationComponent";
 
 export interface ProductsListProps {
   data: Product[];
