@@ -1,5 +1,5 @@
-const title = 'Random Shop';
-const description = 'Random Shop';
+const title = process.env.NEXT_PUBLIC_SHOP_NAME;
+const description = process.env.NEXT_PUBLIC_SHOP_DESCRIPTION;
 
 const NextSeoConfig = {
   title,
