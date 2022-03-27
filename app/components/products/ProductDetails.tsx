@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Rating } from "./Rating";
 import { NextSeo } from "next-seo";
-import { RandomShopMarkdown } from "../shared/RandomShopMarkdown";
+import { ZaisteProgramujShopMarkdown } from "../shared/ZaisteProgramujShopMarkdown";
 import { MarkdownResult } from "../../types/utilis_types";
 
 export interface ProductDetails {
@@ -55,7 +55,7 @@ export const ProductDetails = ({ data }: ProductProps) => {
             <h2 className="p-4 text-3xl font-bold">{data.title}</h2>
             <p className="p-4">{data.description}</p>
             <article className="prose lg:prose-xl p-4">
-              <RandomShopMarkdown>{data.longDescription}</RandomShopMarkdown>
+              <ZaisteProgramujShopMarkdown>{data.longDescription}</ZaisteProgramujShopMarkdown>
             </article>
             <Rating rating={data.rating} />
           </div>
